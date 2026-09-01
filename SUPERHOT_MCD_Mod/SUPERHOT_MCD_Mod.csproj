@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net35</TargetFramework>
-    <AssemblyName>tempy.ap.SHMCD</AssemblyName>
+    <AssemblyName>SUPERHOT_MCD_Archipelago</AssemblyName>
     <Product>SUPERHOT MCD Archipelago</Product>
     <Version>0.1.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
