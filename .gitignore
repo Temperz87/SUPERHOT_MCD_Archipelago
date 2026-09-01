@@ -1,24 +1,3 @@
-# Visual Studio user-specific files
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# Build results and assemblies
-[Dd]ebug/
-[Rr]elease/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Ll]ogs/
-*.vs/
-
-# Ignore referenced game DLLs or BepInEx core files
-# Never commit game assemblies or proprietary DLLs
-*.dll
-
-# NuGet packages
-**/packages/*
-!**/packages/build/
-*.nupkg
+SUPERHOT_MCD_Mod/bin/*
+SUPERHOT_MCD_Mod/obj/*
 .vscode/*
