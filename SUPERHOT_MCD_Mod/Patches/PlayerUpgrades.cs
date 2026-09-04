@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
 using HarmonyLib;
 using SUPERHOT_MCD_Mod;
 
@@ -19,7 +16,7 @@ public static class Ensure_APModProgression
         if (!ArchipelagoManager.Connected)
             return true;
 
-        __result = ArchipelagoSaveManager.UnlockedMods.ToList();
+        __result = ArchipelagoDataManager.UnlockedMods.ToList();
         foreach (Modifier mod in __result) 
         {
             Plugin.Logger.LogDebug($"{mod.name} is unlocked");
@@ -34,7 +31,7 @@ public static class Ensure_APModProgression
         if (!ArchipelagoManager.Connected)
             return true;
 
-        if (!ArchipelagoSaveManager.UnlockedMods.Contains(mod))
+        if (!ArchipelagoDataManager.UnlockedMods.Contains(mod))
         {
             Plugin.Logger.LogWarning($"Not unlocking mod: {mod.name} due to it not being present in ArchipelagoSaveManager.UnlockedMods!");
             return false;

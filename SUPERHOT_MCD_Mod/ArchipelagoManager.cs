@@ -45,11 +45,11 @@ public static class ArchipelagoManager
         {
             // TODO: check data to see if hack has already been unlocked
             if (mod is FullHealMod)
-                ArchipelagoSaveManager.UnlockedMods.Add(mod);
+                ArchipelagoDataManager.UnlockedMods.Add(mod);
         }
 
         // TODO: Unlock minds based on archipelago data
-        ArchipelagoSaveManager.UnlockedCharacters.Add(MindID.TESTMIND);
+        ArchipelagoDataManager.UnlockedCharacters.Add(MindID.TESTMIND);
 
         // TODO: Unlock guns based on archipelago data
     }

@@ -1,0 +1,314 @@
+{
+  "Items": [
+    {
+      "Filename": "RUN_CACHE_BERSERK.asset",
+      "RunID": "79"
+    },
+    {
+      "Filename": "RUN_CACHE_DEATH_STOMP.asset",
+      "RunID": "96"
+    },
+    {
+      "Filename": "RUN_CACHE_EXPLODE.asset",
+      "RunID": "93"
+    },
+    {
+      "Filename": "RUN_CACHE_GRENADE.asset",
+      "RunID": "99"
+    },
+    {
+      "Filename": "RUN_CACHE_HEADSHOT_FLOW.asset",
+      "RunID": "95"
+    },
+    {
+      "Filename": "RUN_CACHE_KILL_HEAL.asset",
+      "RunID": "83"
+    },
+    {
+      "Filename": "RUN_CACHE_KILL_RELOAD.asset",
+      "RunID": "98"
+    },
+    {
+      "Filename": "RUN_CACHE_LIGHTING_REFLEXES.asset",
+      "RunID": "97"
+    },
+    {
+      "Filename": "RUN_CACHE_MASS_DEFLECT.asset",
+      "RunID": "90"
+    },
+    {
+      "Filename": "RUN_CACHE_PIERCING_SHOT.asset",
+      "RunID": "89"
+    },
+    {
+      "Filename": "RUN_CACHE_RICOCHET.asset",
+      "RunID": "94"
+    },
+    {
+      "Filename": "RUN_CACHE_SUPER_PUNCHES.asset",
+      "RunID": "91"
+    },
+    {
+      "Filename": "RUN_CACHE_SUPER_THROWS.asset",
+      "RunID": "92"
+    },
+    {
+      "Filename": "RUN_CACHE_WEAPON_MASTER.asset",
+      "RunID": "88"
+    },
+    {
+      "Filename": "RUN_SPECIAL_Corridor_Addict.asset",
+      "RunID": "60"
+    },
+    {
+      "Filename": "RUN_SPECIAL_Corridor_Dog.asset",
+      "RunID": "58"
+    },
+    {
+      "Filename": "RUN_SPECIAL_Corridor_Ninja.asset",
+      "RunID": "59"
+    }
+  ],
+  "Runs": [
+    {
+      "Filename": "RUN_LEVEL_1A.asset",
+      "RunID": "1"
+    },
+    {
+      "Filename": "RUN_LEVEL_1B.asset",
+      "RunID": "19"
+    },
+    {
+      "Filename": "RUN_LEVEL_1C.asset",
+      "RunID": "2"
+    },
+    {
+      "Filename": "RUN_LEVEL_2.asset",
+      "RunID": "3"
+    },
+    {
+      "Filename": "RUN_LEVEL_2A.asset",
+      "RunID": "21"
+    },
+    {
+      "Filename": "RUN_LEVEL_2B.asset",
+      "RunID": "22"
+    },
+    {
+      "Filename": "RUN_LEVEL_3.asset",
+      "RunID": "4"
+    },
+    {
+      "Filename": "RUN_LEVEL_3A.asset",
+      "RunID": "20"
+    },
+    {
+      "Filename": "RUN_LEVEL_3B.asset",
+      "RunID": "23"
+    },
+    {
+      "Filename": "RUN_LEVEL_3C.asset",
+      "RunID": "24"
+    },
+    {
+      "Filename": "RUN_LEVEL_4.asset",
+      "RunID": "5"
+    },
+    {
+      "Filename": "RUN_LEVEL_4A.asset",
+      "RunID": "25"
+    },
+    {
+      "Filename": "RUN_LEVEL_4C.asset",
+      "RunID": "27"
+    },
+    {
+      "Filename": "RUN_LEVEL_5.asset",
+      "RunID": "6"
+    },
+    {
+      "Filename": "RUN_LEVEL_5B.asset",
+      "RunID": "28"
+    },
+    {
+      "Filename": "RUN_LEVEL_5C.asset",
+      "RunID": "29"
+    },
+    {
+      "Filename": "RUN_LEVEL_5D.asset",
+      "RunID": "71"
+    },
+    {
+      "Filename": "RUN_LEVEL_6.asset",
+      "RunID": "7"
+    },
+    {
+      "Filename": "RUN_LEVEL_6B.asset",
+      "RunID": "30"
+    },
+    {
+      "Filename": "RUN_LEVEL_6C.asset",
+      "RunID": "37"
+    },
+    {
+      "Filename": "RUN_LEVEL_7.asset",
+      "RunID": "8"
+    },
+    {
+      "Filename": "RUN_LEVEL_7B.asset",
+      "RunID": "31"
+    },
+    {
+      "Filename": "RUN_LEVEL_7C.asset",
+      "RunID": "36"
+    },
+    {
+      "Filename": "RUN_LEVEL_8.asset",
+      "RunID": "9"
+    },
+    {
+      "Filename": "RUN_LEVEL_8A.asset",
+      "RunID": "32"
+    },
+    {
+      "Filename": "RUN_LEVEL_8B.asset",
+      "RunID": "800"
+    },
+    {
+      "Filename": "RUN_LEVEL_8C.asset",
+      "RunID": "34"
+    },
+    {
+      "Filename": "RUN_LEVEL_8D.asset",
+      "RunID": "35"
+    },
+    {
+      "Filename": "RUN_SPECIAL_Crypt_Addict.asset",
+      "RunID": "75"
+    },
+    {
+      "Filename": "RUN_SPECIAL_Crypt_Dog.asset",
+      "RunID": "77"
+    },
+    {
+      "Filename": "RUN_SPECIAL_Crypt_Ninja.asset",
+      "RunID": "76"
+    }
+  ],
+  "DontRandomize": [
+    {
+      "Filename": "RUN_LEVEL_0.asset",
+      "RunID": "0"
+    },
+    {
+      "Filename": "RUN_ALL.asset",
+      "RunID": "61"
+    },
+    {
+      "Filename": "RUN_EMPTY.asset",
+      "RunID": "43"
+    },
+    {
+      "Filename": "RUN_HACK_UNLOCK.asset",
+      "RunID": "62"
+    },
+    {
+      "Filename": "RUN_LEVEL_100.asset",
+      "RunID": "18"
+    },
+    {
+      "Filename": "RUN_LEVEL_ADDICT_ENDING.asset",
+      "RunID": "300"
+    },
+    {
+      "Filename": "RUN_LEVEL_ALL_CONCRETE.asset",
+      "RunID": "39"
+    },
+    {
+      "Filename": "RUN_LEVEL_ALL_EXPLODE.asset",
+      "RunID": "40"
+    },
+    {
+      "Filename": "RUN_LEVEL_ALL_RED.asset",
+      "RunID": "38"
+    },
+    {
+      "Filename": "RUN_LEVEL_DOG_ENDING.asset",
+      "RunID": "302"
+    },
+    {
+      "Filename": "RUN_LEVEL_NINJA_ENDING.asset",
+      "RunID": "301"
+    },
+    {
+      "Filename": "RUN_LEVEL_NO_CORES_ENDING.asset",
+      "RunID": "44"
+    },
+    {
+      "Filename": "RUN_LEVEL_NO_HACKS_ENDING_RUN.asset",
+      "RunID": "45"
+    },
+    {
+      "Filename": "RUN_LEVEL_NOHACKS_ENDING.asset",
+      "RunID": "303"
+    },
+    {
+      "Filename": "RUN_LEVEL_SHOTGUN_MAYHEM.asset",
+      "RunID": "48"
+    },
+    {
+      "Filename": "RUN_LEVEL_ZOMBIE_RUSH.asset",
+      "RunID": "41"
+    },
+    {
+      "Filename": "RUN_SPECIAL_BASIC_TUTORIAL.asset",
+      "RunID": "74"
+    },
+    {
+      "Filename": "RUN_SPECIAL_Corridor_Empty.asset",
+      "RunID": "200"
+    },
+    {
+      "Filename": "RUN_SPECIAL_END.asset",
+      "RunID": "304"
+    },
+    {
+      "Filename": "RUN_SPECIAL_HACKER_3.asset",
+      "RunID": "123"
+    },
+    {
+      "Filename": "RUN_SPECIAL_HACKER_4.asset",
+      "RunID": "124"
+    },
+    {
+      "Filename": "RUN_SPECIAL_HACKER_5.asset",
+      "RunID": "125"
+    },
+    {
+      "Filename": "RUN_SPECIAL_INFINITE.asset",
+      "RunID": "73"
+    },
+    {
+      "Filename": "RUN_SPECIAL_SAMSARA.asset",
+      "RunID": "400"
+    },
+    {
+      "Filename": "RUN_STORY.asset",
+      "RunID": "63"
+    }
+  ],
+  "UnaccesibleLevels": [
+    {
+      "Filename": "RUN_SPECIAL_Crypt_Endurance.asset",
+      "RunID": "70"
+    },
+    {
+      "Filename": "RUN_CACHE_BULLETS.asset",
+      "RunID": "80"
+    },
+    {
+      "Filename": "RUN_CACHE_QUICK_SHOT.asset",
+      "RunID": "84"
+    }
+  ]
+}

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
 
-// Patch responsible for making sure the archipelago data gets loaded
-// In place of a save file
-
 [HarmonyPatch]
 public static class Inject_APGunProgression
 {
@@ -13,9 +10,9 @@ public static class Inject_APGunProgression
     private static string[][] lockedWeaponMessages =
     [
         ["NOT", "YET"],
-        ["FIND", "THE", "WEAPONS", "CHECK"],
-        ["CAN'T", "SHOOT", "THIS", "YET"],
-        ["FIRING", "NOT", "UNLOCKED"],
+        ["FIND", "THE", "WEAPONS", "CLEARANCE"],
+        ["CAN'T", "FIRE", "THIS", "YET"],
+        ["FIRING", "NOT", "CLEARED"],
         ["SAFETY", "IS", "ON"],
         ["LOCKED", "BEHIND", "PROGRESSION"]
     ];
@@ -32,7 +29,7 @@ public static class Inject_APGunProgression
         if (!ArchipelagoManager.Connected)
             return true;
         
-        if (__instance.ammoCount >= 0 && !ArchipelagoSaveManager.UnlockedGuns.Contains(__instance.WeaponId))
+        if (__instance.ammoCount >= 0 && !ArchipelagoDataManager.UnlockedGuns.Contains(__instance.WeaponId))
         {
             __instance.Invoke("LaunchNoAmmoAnimation", 0);
             if (__instance.weapon_SubType != Weapon_SubType.Shotgun && 
@@ -51,5 +48,18 @@ public static class Inject_APGunProgression
         }
 
         return true;
+    }
+}
+
+[HarmonyPatch]
+public static class Inject_ShotgunMeleeWhenNotUnlocked
+{
+    [HarmonyPatch(typeof(Gun), nameof(Gun.Pickup))]
+    public static void Postfix(Gun __instance)
+    {
+        if (__instance.weapon_SubType == Weapon_SubType.Shotgun && !ArchipelagoDataManager.UnlockedGuns.Contains(Assets.Scripts.Weapons.WeaponID.Shotgun))
+        {
+            __instance.Invoke("LaunchNoAmmoAnimation", 0);
+        }
     }
 }

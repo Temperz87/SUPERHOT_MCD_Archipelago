@@ -21,5 +21,6 @@ public class Plugin : BaseUnityPlugin
         harmony.PatchAll();
         Logger.LogInfo("Patched!..");
         ArchipelagoManager.OnConnect();
+        DebugLevelRandomizer.DebugRandomize();
     }
 }   
