@@ -22,7 +22,7 @@ public static class ArchipelagoManager
         {
             result = session.TryConnectAndLogin("SUPERHOT: MIND CONTROL DELETE", slotName, 
                                                 Archipelago.MultiClient.Net.Enums.ItemsHandlingFlags.AllItems,
-                                                password: password);
+                                                password: password, requestSlotData: true);
             Connected = result.Successful;
         }
         catch (Exception e)
@@ -34,6 +34,12 @@ public static class ArchipelagoManager
 
         if (!Connected)
             return false;   
+
+
+        // TODO: Setup deathlink, setup randomized level order
+        var slotdata = ((LoginSuccessful)result).SlotData;
+        if (!(bool)slotdata["unlockPyramidLayers"])
+            ArchipelagoDataManager.FloorPrivilege = 6;
 
         OnConnect();
         return true;
