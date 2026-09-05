@@ -38,7 +38,8 @@ public static class ArchipelagoManager
 
         // TODO: Setup deathlink, setup randomized level order
         var slotdata = ((LoginSuccessful)result).SlotData;
-        if (!(bool)slotdata["unlockPyramidLayers"])
+        Plugin.Logger.LogDebug($"data: {slotdata["unlockPyramidLayers"]}");
+        if (slotdata["unlockPyramidLayers"].ToString() == "1")
             ArchipelagoDataManager.FloorPrivilege = 6;
 
         OnConnect();
