@@ -76,11 +76,10 @@ public static class ArchipelagoDataManager
         {
             // TODO: If the player is in the menu show the animation of the hack being unlocked
             // We unlocked a hack!
-            // We don't need to inform superhot that the hack is unlocked
-            // Because we have a patch setup for PlayerUpgrades that'll report all unlocked mods
-            //  directly form the Archipelago
             Modifier mod = ItemToModifier(item);
             UnlockedMods.Add(mod);
+            if (PlayerUpgrades.UnlockedMods != null)
+                PlayerUpgrades.UnlockMod(mod);
         }
     }
 

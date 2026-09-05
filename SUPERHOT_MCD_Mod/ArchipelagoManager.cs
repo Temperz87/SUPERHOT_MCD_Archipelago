@@ -43,7 +43,6 @@ public static class ArchipelagoManager
     {
         // Set seed for save file
         ArchipelagoDataManager.SaveFile = Path.Combine(Plugin.PluginFolder, "shmcd.save." + session.RoomState.Seed);
-        Plugin.Logger.LogDebug("Here!");
 
         // We're going to offload the entire save manager to persistent data
         // Hence start by clearing all data in it
@@ -52,12 +51,9 @@ public static class ArchipelagoManager
         if (SHRLSaveManager.Instance)
             SHRLSaveManager.Instance.ClearSaveManager();
         
-        Plugin.Logger.LogDebug("Here2!");
         EventManager.Subscribe(SHRLManager.RunEvent.OnWin, RunWon);
-        Plugin.Logger.LogDebug("Here3!");
         // TODO: Handle level randomization
         session.Items.ItemReceived += OnReceiveItem;
-        Plugin.Logger.LogDebug("Here4!");
         session.Socket.SocketClosed += (reason) =>
         {
             // TODO: Graceful disconnect
@@ -66,11 +62,9 @@ public static class ArchipelagoManager
             Plugin.Logger.LogWarning("Disconnected from Archipelago");
         };
 
-        Plugin.Logger.LogDebug("Here5!");
         // Sync items on reconnect
         while (session.Items.Any())
             OnReceiveItem((Archipelago.MultiClient.Net.Helpers.ReceivedItemsHelper)session.Items);
-        Plugin.Logger.LogDebug("Here6!");
     }
 
     private static void OnReceiveItem(Archipelago.MultiClient.Net.Helpers.ReceivedItemsHelper handler)
