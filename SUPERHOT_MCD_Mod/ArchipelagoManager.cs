@@ -78,7 +78,7 @@ public static class ArchipelagoManager
         catch (Exception e)
         {
             Plugin.Logger.LogError($"Exception thrown while trying to unlock item");
-            throw e;
+            Plugin.Logger.LogError(e.Message);
         }
     }
 

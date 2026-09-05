@@ -55,6 +55,9 @@ public static class ArchipelagoDataManager
     public static int FloorPrivilege = 0;
     public static Dictionary<RunID, RunID> RemappedRuns = new();
 
+    // Hacks that haven't had an "unlock animation" shown yet
+    public static HashSet<Modifier> PendingViewedHacks = new();
+
     public static void UnlockItem(ArchipelagoItem item)
     {
         Plugin.Logger.LogDebug($"Unlocking item {item} of id {(int)item}");
@@ -66,7 +69,7 @@ public static class ArchipelagoDataManager
         }
         else if (item >= ArchipelagoItem.PRIVILEGE_ESCALATION_SHORT && item <= ArchipelagoItem.PRIVILEGE_ESCALATION_LOST)
         {
-            FloorPrivilege = item - ArchipelagoItem.PRIVILEGE_ESCALATION_SHORT + 1;
+            FloorPrivilege = Math.Max(FloorPrivilege, item - ArchipelagoItem.PRIVILEGE_ESCALATION_SHORT + 1);
         }
         else if (item >= ArchipelagoItem.MOREcore && item <= ArchipelagoItem.PUREcore) {
             MindID mind = (MindID)(item - ArchipelagoItem.MOREcore);
@@ -74,12 +77,18 @@ public static class ArchipelagoDataManager
         } 
         else
         {
-            // TODO: If the player is in the menu show the animation of the hack being unlocked
             // We unlocked a hack!
             Modifier mod = ItemToModifier(item);
             UnlockedMods.Add(mod);
+            PendingViewedHacks.Add(mod);
             if (PlayerUpgrades.UnlockedMods != null)
                 PlayerUpgrades.UnlockMod(mod);
+
+            // TODO: Display the hack unlock view
+            // Use SHGUI.AddViewOnTop for the parent
+            // if (SHRLGame.Instance?.PlayerStats?.CurrentRun == null)
+            // {
+            // }
         }
     }
 

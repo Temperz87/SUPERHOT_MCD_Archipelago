@@ -9,9 +9,13 @@ public static class Ensure_OnlyViewUnlockedHacks
 {
     [HarmonyPatch(typeof(HackUnlockView), "PrepareMods")]
     [HarmonyPrefix]
-    public static void Prefix(ref ModTerminalInfo ___modTerminalInfo)
+    public static bool Prefix(ref List<Modifier> ___modsToUnlock)
     {
-        ___modTerminalInfo.Unlocks = ___modTerminalInfo.Unlocks
-            .Where(ArchipelagoDataManager.UnlockedMods.Contains).ToList();
+        if (!ArchipelagoManager.Connected)
+            return false;
+
+        ___modsToUnlock = ArchipelagoDataManager.PendingViewedHacks.ToList();
+        ArchipelagoDataManager.PendingViewedHacks.Clear();
+        return true;
     }
 }
