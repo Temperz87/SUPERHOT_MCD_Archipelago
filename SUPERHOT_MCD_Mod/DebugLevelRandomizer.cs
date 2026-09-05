@@ -81,6 +81,7 @@ public static class DebugLevelRandomizer
 
     public static void DebugRandomize()
     {
+        return;
         Assembly assembly = Assembly.GetExecutingAssembly();
         string resourceName = "SUPERHOT_MCD_Mod.level-pools.json";                
         List<RunID> itemRunIds;
