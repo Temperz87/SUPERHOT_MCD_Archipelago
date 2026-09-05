@@ -121,21 +121,21 @@ public static class ArchipelagoDataManager
                 foreach (Modifier mod in allModifiers)
                 {
                     // TODO: The way the translation system works breaks this
-                    // In other languages "one" and "hp" can be translated differently
-                    if (mod is OneHPMod && (mod.Name == "OneHP"))
+                    // In other languages "hp" can be translated differently
+                    if (mod is OneHPMod && (mod.Name == "3HP.hack"))
                         return mod;
                 }
                 Plugin.Logger.LogError("Couldn't find 3HP.hack");
                 throw new KeyNotFoundException("Couldn't find 3HP.hack");
             case ArchipelagoItem.HPhack4:
                 foreach (Modifier mod in allModifiers)
-                    if (mod is OneHPMod && (mod.Name == "TwoHP"))
+                    if (mod is OneHPMod && (mod.Name == "4HP.hack"))
                         return mod;
                 Plugin.Logger.LogError("Couldn't find 4HP.hack");
                 throw new KeyNotFoundException("Couldn't find 4HP.hack");
             case ArchipelagoItem.HPhack5:
                 foreach (Modifier mod in allModifiers)
-                    if (mod is OneHPMod && (mod.Name == "ThreeHP"))
+                    if (mod is OneHPMod && (mod.Name == "5HP.hack"))
                         return mod;
                 Plugin.Logger.LogError("Couldn't find 5HP.hack");
                 throw new KeyNotFoundException("Couldn't find 5HP.hack");
