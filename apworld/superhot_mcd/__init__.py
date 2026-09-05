@@ -1,4 +1,7 @@
-from __future__ import annotations
+# from . import components as components
+from .world import SHMCDWorld as SHMCDWorld
 
-from BaseClasses import ItemClassification, Tutorial
-from worlds.AutoWorld import WebWorld, World
+# See these files alo:
+#   world.py regions.py locations.py rules.py option.py web_world.py
+# This APWorld was created by following the template given by APQuest
+# Thank you NewSoupVi for making that template, it is very helpful!
