@@ -26,7 +26,7 @@ class UnlockPyramidLayers(DefaultOnToggle):
     display_name = "Unlock Pyramid Layers"
 
 
-class UnlockWeaponFiring(DefaultOnToggle):
+class UnlockWeaponFiring(Toggle):
     """
     THE USER WILL NEED FIRING CLEARNCES TO FIRE THE PISTOL, SHOTGUN, MACHINEGUN, AND SNIPERRIFLE.
     """
