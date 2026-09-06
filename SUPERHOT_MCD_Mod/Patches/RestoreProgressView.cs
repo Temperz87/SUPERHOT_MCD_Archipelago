@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
 using HarmonyLib;
-using MCDView;
+
+// Harmony patch to catch when someone starts the restore process
+// When that process starts, the game has been won
 
 [HarmonyPatch]
 public static class Inject_WinCondition

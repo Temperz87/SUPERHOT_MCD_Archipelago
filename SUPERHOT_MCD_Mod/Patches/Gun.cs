@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
 
+// This patch ensures a player can't fire guns they don't have access to yet
+// This patch is "turned off" by adding all guns to ArchipelagoDataManager.UnlockedGuns
+
 [HarmonyPatch]
 public static class Inject_APGunProgression
 {

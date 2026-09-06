@@ -3,6 +3,8 @@ using System.Linq;
 using HarmonyLib;
 using MCDView;
 
+// This patch ensures that the hack screen only shows actually unlocked hacks
+
 [HarmonyPatch]
 public static class Ensure_OnlyViewUnlockedHacks
 {

@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using HarmonyLib;
 using MCDView;
-using SUPERHOT_MCD_Mod;
 using Utilities.CameraEffects;
 
 // This patch is responsible for the popup that occurs
 // When you access a tunnel for the first time
-// Or don't have the neccesary unlock to use it
+//  or don't have the neccesary unlock to use it
 [HarmonyPatch]
 public static class Inject_TunnelCellConfirmation
 {

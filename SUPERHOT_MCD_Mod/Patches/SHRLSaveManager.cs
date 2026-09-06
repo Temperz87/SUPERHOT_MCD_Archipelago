@@ -4,7 +4,9 @@ using HarmonyLib;
 using Statistics;
 using SystemStorage;
 
-// Patches responsible for redirecting the Archipelago to a new save file
+// Patches responsible for redirecting the Archipelago data to a new save file
+// This means we can put whatever we want in the new save file
+// and the game won't break when the data "gets loaded", because it doesn't get loaded
 
 [HarmonyPatch]
 public static class Ensure_ArchipelagoDataOnly
