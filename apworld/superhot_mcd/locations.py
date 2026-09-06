@@ -247,16 +247,19 @@ def put_locations_in_default_regions(world: SHMCDWorld) -> None:
         if location[0].startswith("SENSORY")
     ]
 
+    sensory_levels.append("QUARANTINE / BROKEN")
     place_locations(sensory_layer, sensory_levels)
     short_levels = [
         location[0] for location in levels + item_locations
         if location[0].startswith("SHORT")
     ]
 
+    short_levels.append("QUARANTINE / UNSTABLE")
+    short_levels.append("QUARANTINE / TOXIC")
     place_locations(short_layer, short_levels)
     long_levels = [
         location[0] for location in levels + item_locations
-        if location[0].startswith("LONG") or location[0].startswith("QUARANTINE")
+        if location[0].startswith("LONG") or location[0].startswith("ENCRYPTED")
     ]
 
     place_locations(long_layer, long_levels)

@@ -111,4 +111,6 @@ public static class ArchipelagoManager
 
     // Named function and not a lambda so we can unsubscribe when we disconnect
     private static void RunWon(object[] _) => CheckLocation(SHRLGame.Instance.PlayerStats.CurrentRun.RunID);
+    
+    public static void Win() => session.SetGoalAchieved();
 }

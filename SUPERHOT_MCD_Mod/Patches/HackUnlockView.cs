@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
@@ -12,7 +11,7 @@ public static class Ensure_OnlyViewUnlockedHacks
     public static bool Prefix(ref List<Modifier> ___modsToUnlock)
     {
         if (!ArchipelagoManager.Connected)
-            return false;
+            return true;
 
         ___modsToUnlock = ArchipelagoDataManager.PendingViewedHacks.ToList();
         ArchipelagoDataManager.PendingViewedHacks.Clear();

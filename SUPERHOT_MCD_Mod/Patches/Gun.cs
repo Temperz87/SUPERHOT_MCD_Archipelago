@@ -10,7 +10,7 @@ public static class Inject_APGunProgression
     private static string[][] lockedWeaponMessages =
     [
         ["NOT", "YET"],
-        ["FIND", "THE", "WEAPONS", "CLEARANCE"],
+        ["FIND", "THE", "WEAPONS", "CHECK"],
         ["CAN'T", "FIRE", "THIS", "YET"],
         ["FIRING", "NOT", "CLEARED"],
         ["SAFETY", "IS", "ON"],

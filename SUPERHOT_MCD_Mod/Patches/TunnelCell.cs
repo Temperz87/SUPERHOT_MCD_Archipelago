@@ -56,15 +56,10 @@ public static class Inject_TunnelCellConfirmation
             string confirm = "AUTHENTICATED, YOU MAY PROCEED";
             int x = SHGUI.current.resolutionX / 2 - confirm.Length / 2 - 1;;
             int y =  SHGUI.current.resolutionY / 2 - 1;
-            Plugin.Logger.LogInfo("here"); 
             Type internalType = AccessTools.TypeByName("MCDView.InfoFadePopup");
-            Plugin.Logger.LogInfo("here2"); 
             object[] parameters = [confirm, x, y, 'w', 'w', 1.5f, false];
-            Plugin.Logger.LogInfo("here3"); 
             object infoFadePopup = Activator.CreateInstance(internalType, parameters);
-            Plugin.Logger.LogInfo("here4"); 
             SHGUI.current.AddViewOnTop((SHGUIview)infoFadePopup);
-            Plugin.Logger.LogInfo("here5"); 
         }   
         else
         {

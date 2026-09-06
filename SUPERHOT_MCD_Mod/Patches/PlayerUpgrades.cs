@@ -24,6 +24,8 @@ public static class Ensure_APModProgression
         return false;
     }
     
+    // TODO: I think there's a bug here
+    // Where 4HP doesn't work unless 5HP is also added
     [HarmonyPatch(typeof(PlayerUpgrades), nameof(PlayerUpgrades.UnlockMod))]
     [HarmonyPrefix]
     private static bool Prefix_UnlockMod(Modifier mod)

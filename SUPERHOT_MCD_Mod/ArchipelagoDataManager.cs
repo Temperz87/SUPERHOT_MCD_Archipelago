@@ -78,6 +78,8 @@ public static class ArchipelagoDataManager
         else
         {
             // We unlocked a hack!
+            // TODO: I think there's a bug here
+            // Where 4HP doesn't work unless 5HP is also added
             Modifier mod = ItemToModifier(item);
             UnlockedMods.Add(mod);
             PendingViewedHacks.Add(mod);
