@@ -53,15 +53,18 @@ def connect_regions(world: SHMCDWorld) -> None:
         sensory_layer.connect(short_layer, "SENSORY TO SHORT", lambda state: state.has("PRIVILEGE ESCALATION: SHORT", world.player))
         short_layer.connect(long_layer, "SHORT TO LONG",  lambda state: state.has("PRIVILEGE ESCALATION: LONG", world.player))
         long_layer.connect(core_layer, "LONG TO LAYER CORE", lambda state: state.has("PRIVILEGE ESCALATION: CORE", world.player))
-        core_layer.connect(lost_layer, "CORE TO LOST", lambda state: state.has("PRIVILEGE ESCALATION: LOST", world.player))
+        core_layer.connect(lost_layer, "CORE TO LOST", lambda state: state.has("PRIVILEGE ESCALATION: LOST", world.player) and
+                                        state.has("MORE.core", world.player) and
+                                        state.has("CHARGE.core", world.player) and
+                                        state.has("HOTSWITCH.core", world.player) and
+                                        state.has("RECALL.core", world.player))
     else:
         sensory_layer.connect(short_layer, "SENSORY TO SHORT")
         short_layer.connect(long_layer, "SHORT TO LONG")
         long_layer.connect(core_layer, "LONG TO LAYER CORE")
-        core_layer.connect(lost_layer, "CORE TO LOST")
+        core_layer.connect(lost_layer, "CORE TO LOST", lambda state: state.has("MORE.core", world.player) and
+                                        state.has("CHARGE.core", world.player) and
+                                        state.has("HOTSWITCH.core", world.player) and
+                                        state.has("RECALL.core", world.player))
 
-    lost_layer.connect(ending_layer, "LOST TO ENDING", lambda state: 
-                state.has("MORE.core", world.player) and
-                state.has("CHARGE.core", world.player) and
-                state.has("HOTSWITCH.core", world.player) and
-                state.has("RECALL.core", world.player))
+    lost_layer.connect(ending_layer, "LOST TO ENDING")

@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Archipelago.MultiClient.Net;
 using Archipelago.MultiClient.Net.Models;
+using Assets.Scripts.Weapons;
 using BepInEx.Logging;
 using SUPERHOT_MCD_Mod;
 
@@ -38,9 +40,25 @@ public static class ArchipelagoManager
 
         // TODO: Setup deathlink, setup randomized level order
         var slotdata = ((LoginSuccessful)result).SlotData;
-        Plugin.Logger.LogDebug($"data: {slotdata["unlockPyramidLayers"]}");
-        if (slotdata["unlockPyramidLayers"].ToString() == "1")
-            ArchipelagoDataManager.FloorPrivilege = 6;
+        Plugin.Logger.LogDebug($"unlockPyramidLayers: {slotdata["unlockPyramidLayers"]}");
+        if (slotdata["unlockPyramidLayers"].ToString() == "0")
+            ArchipelagoDataManager.FloorPrivilege = 100;
+        
+        Plugin.Logger.LogDebug($"unlockWeaponFiring: {slotdata["unlockWeaponFiring"]}");
+        if (slotdata["unlockWeaponFiring"].ToString() == "0")
+        {
+            ArchipelagoDataManager.UnlockedGuns.Add(WeaponID.Pistol);
+            ArchipelagoDataManager.UnlockedGuns.Add(WeaponID.Shotgun);
+            ArchipelagoDataManager.UnlockedGuns.Add(WeaponID.MachineGun);
+            ArchipelagoDataManager.UnlockedGuns.Add(WeaponID.SniperRifle);
+        }
+
+        Plugin.Logger.LogDebug($"randomize level: {slotdata["randomizeLevelOrder"].ToString()}");
+        if (slotdata["randomizeLevelOrder"].ToString() == "1")
+        {
+            string randomstring = slotdata["order_string"].ToString();
+            LevelRemapper.Remap(randomstring);
+        }
 
         OnConnect();
         return true;
@@ -108,9 +126,12 @@ public static class ArchipelagoManager
             session.Locations.CompleteLocationChecks(id);
     }
 
-
     // Named function and not a lambda so we can unsubscribe when we disconnect
     private static void RunWon(object[] _) => CheckLocation(SHRLGame.Instance.PlayerStats.CurrentRun.RunID);
     
-    public static void Win() => session.SetGoalAchieved();
+    public static void Win() 
+    {
+        Plugin.Logger.LogDebug("A winner is you!");
+        session.SetGoalAchieved();
+    }
 }

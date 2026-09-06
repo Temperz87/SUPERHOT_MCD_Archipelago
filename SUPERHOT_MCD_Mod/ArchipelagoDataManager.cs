@@ -53,7 +53,6 @@ public static class ArchipelagoDataManager
     public static HashSet<Modifier> UnlockedMods = new();
     public static HashSet<WeaponID> UnlockedGuns = new();
     public static int FloorPrivilege = 0;
-    public static Dictionary<RunID, RunID> RemappedRuns = new();
 
     // Hacks that haven't had an "unlock animation" shown yet
     public static HashSet<Modifier> PendingViewedHacks = new();

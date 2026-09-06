@@ -24,7 +24,7 @@ public static class Inject_TunnelCellConfirmation
     [HarmonyPrefix]
     public static bool Prefix_ActivateUnlocked(PyramidView ___pyramidView, PyramidDataContainer ___pyramid)
     {
-        if (!ArchipelagoManager.Connected)
+        if (!ArchipelagoManager.Connected || ArchipelagoDataManager.FloorPrivilege == 100)
             return true;
 
 

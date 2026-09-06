@@ -11,19 +11,18 @@ class DeathLink(Toggle):
 
 class RandomizeLevelOrder(DefaultOnToggle):
     """
-    WILL THE NODES INSIDE OF THE PYRAMID APPEAR IN A RANODM ORDER?
-    NOTE THAT CACHES AND QUARANTINES WILL BE RANDOMIZED SEPARATELY;
-    AND THE ENDING SEQUENCE WILL BE IN THE SAME ORDER.
+    THE NODES INSIDE OF THE PYRAMID APPEAR IN A RANODM ORDER.
+    NOTE THE TOP MOST LAYER WILL APPEAR IN THE SAME ORDER.
     """
     display_name = "Randomize level order"
 
 
 class UnlockPyramidLayers(DefaultOnToggle):
     """
-    THE USER WILL REQUIRE PRIVILEGE ESCALATIONS IN ORDER TO ACCESS HIGHER LEVELS IN THE PYRAMID.
+    THE USER WILL REQUIRE PRIVILEGE ESCALATIONS IN ORDER TO ACCESS HIGHER LAYERS IN THE PYRAMID.
     """
 
-    display_name = "Unlock Pyramid Layers"
+    display_name = "Unlock pyramid layers"
 
 
 class UnlockWeaponFiring(Toggle):
@@ -31,7 +30,7 @@ class UnlockWeaponFiring(Toggle):
     THE USER WILL NEED FIRING CLEARNCES TO FIRE THE PISTOL, SHOTGUN, MACHINEGUN, AND SNIPERRIFLE.
     """
 
-    display_name = "Unlock Weapon Firing"
+    display_name = "Unlock weapon firing"
 
 @dataclass
 class SHMCDOptions(PerGameCommonOptions):
