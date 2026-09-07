@@ -34,7 +34,7 @@ class UnlockWeaponFiring(Toggle):
 
 @dataclass
 class SHMCDOptions(PerGameCommonOptions):
-    deathlink: DeathLink
+    # deathlink: DeathLink
     randomizeLevelOrder: RandomizeLevelOrder
     unlockPyramidLayers: UnlockPyramidLayers
     unlockWeaponFiring: UnlockWeaponFiring

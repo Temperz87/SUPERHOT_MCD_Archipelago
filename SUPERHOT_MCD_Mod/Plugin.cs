@@ -6,6 +6,7 @@ using System.Reflection;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace SUPERHOT_MCD_Mod;
@@ -24,11 +25,18 @@ public class Plugin : BaseUnityPlugin
         Logger = base.Logger;
         Logger.LogInfo("Plugin \"tempy.ap.SHMCD\" is loading...");
         harmony.PatchAll();
-
         Logger.LogInfo("Patched!..");
-        bool connected = ArchipelagoManager.Connect("127.0.0.1", 38281, "Temperz87", null);
+
+        string json = File.ReadAllText(Path.Combine(PluginFolder, "connection_info.json"));
+        JObject data = JObject.Parse(json);
+        string hostname = (string)data["hostname"];
+        ushort port = (ushort)data["port"];
+        string slot = (string)data["slot"];
+        string password = (string)data["password"];
+        bool connected = ArchipelagoManager.Connect(hostname, port, slot, password);
         if (!connected)
         {
+            // TODO: Actual error handling            
             throw new Exception();
         }
     }

@@ -14,6 +14,7 @@ public static class ArchipelagoManager
 
     public static bool Connect(string ip, ushort port, string slotName, string password)
     {
+        Plugin.Logger.LogDebug($"Trying to connect to {ip}:{port} on slot {slotName}");
         session = ArchipelagoSessionFactory.CreateSession(ip, port);
         LoginResult result;
         try 
