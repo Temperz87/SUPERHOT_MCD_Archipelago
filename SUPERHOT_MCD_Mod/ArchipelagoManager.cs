@@ -29,13 +29,19 @@ public static class ArchipelagoManager
         }
         catch (Exception e)
         {
-            result = new LoginFailure(e.GetBaseException().Message);
-            Plugin.Logger.LogError(result);
+            Plugin.Logger.LogError($"An error has occured while connecting to {ip}:{port}");
+            Plugin.Logger.LogError(e.GetBaseException().Message);
             throw e;
         }
 
         if (!Connected)
+        {
+            LoginFailure failure = (LoginFailure)result;
+            Plugin.Logger.LogError($"An error has occured while connecting to {ip}:{port}");
+            foreach (string error in failure.Errors)
+                Plugin.Logger.LogError(error);
             return false;   
+        }
 
 
         // TODO: Setup deathlink, setup randomized level order
