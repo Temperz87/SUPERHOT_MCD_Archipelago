@@ -106,7 +106,7 @@ public static class ArchipelagoDataManager
             case ArchipelagoItem.MACHINEGUN_FIRING_CLEARANCE:
                 return WeaponID.MachineGun;
             case ArchipelagoItem.SNIPERRIFLE_FIRING_CLEARANCE:
-                return WeaponID.SniperRifle;
+                return 0; // Why is the railgun's weapon id 0???
             default:
                 return WeaponID.None;
         }

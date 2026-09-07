@@ -56,7 +56,9 @@ public static class ArchipelagoManager
             ArchipelagoDataManager.UnlockedGuns.Add(WeaponID.Pistol);
             ArchipelagoDataManager.UnlockedGuns.Add(WeaponID.Shotgun);
             ArchipelagoDataManager.UnlockedGuns.Add(WeaponID.MachineGun);
-            ArchipelagoDataManager.UnlockedGuns.Add(WeaponID.SniperRifle);
+
+            // The railguns weapon id is zero???
+            ArchipelagoDataManager.UnlockedGuns.Add(0); 
         }
 
         Plugin.Logger.LogDebug($"randomize level: {slotdata["randomizeLevelOrder"].ToString()}");
