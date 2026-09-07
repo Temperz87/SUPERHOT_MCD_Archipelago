@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using SUPERHOT_MCD_Mod;
 
+
+// TODO:
+// Nodes 1a, 1b, 1c, and probably another always appear as unlocked, even if they're unreachable currently in randomized mode
 public static class LevelRemapper
 {
     private static RunID[] levelOrder =

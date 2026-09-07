@@ -1,24 +1,20 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using Archipelago.MultiClient.Net;
 using Archipelago.MultiClient.Net.Models;
 using Assets.Scripts.Weapons;
-using BepInEx.Logging;
 using SUPERHOT_MCD_Mod;
 
+
+// TODO: The hack unlock view and the core unlock view almost never have the right contents 
 public static class ArchipelagoManager
 {
-    // TODO: Conditionally set this!
-    // Currently true for debugging purposes
     public static bool Connected {get; private set;} = false;
     private static ArchipelagoSession session = null;
 
     public static bool Connect(string ip, ushort port, string slotName, string password)
     {
         session = ArchipelagoSessionFactory.CreateSession(ip, port);
-
-        // TODO: proper flags
         LoginResult result;
         try 
         {
