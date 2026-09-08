@@ -71,10 +71,11 @@ public static class ArchipelagoDataManager
         {
             FloorPrivilege = Math.Max(FloorPrivilege, item - ArchipelagoItem.PRIVILEGE_ESCALATION_SHORT + 1);
         }
-        else if (item >= ArchipelagoItem.MOREcore && item <= ArchipelagoItem.PUREcore) {
+        else if (item >= ArchipelagoItem.MOREcore && item <= ArchipelagoItem.PUREcore)
+        {
             MindID mind = (MindID)(item - ArchipelagoItem.MOREcore);
             UnlockedCharacters.Add(mind);
-        } 
+        }
         else
         {
             // We unlocked a hack!
@@ -87,18 +88,16 @@ public static class ArchipelagoDataManager
                 PlayerUpgrades.UnlockMod(mod);
 
             // If the player is currently inside the main menu
-            // Immedietally show the hack unlokc view
+            // Immedietally show the hack unlock view
             if (SHRLGame.Instance?.PlayerStats?.CurrentRun == null)
                 return;
-                
-            for (int i = SHGUI.current.views.Count - 1; i >= 0; i--)
+
+            SHGUIPopup interactable = (SHGUIPopup)SHGUI.current.GetInteractableView();
+            SHGUI.current.AddViewOnTop(new HackUnlockView(interactable, 10, null, new(delegate
             {
-                if (SHGUI.current.views[i] is MainView)
-                {
-                    SHGUI.current.AddViewOnTop(new HackUnlockView((SHGUIPopup)SHGUI.current.views[i], 10, null, new(delegate { }), true, false, 3f));
-                    return;                        
-                }       
-            }
+                interactable.Brighten();
+            }), true, false, 3f)); 
+            return;
         }
     }
 
