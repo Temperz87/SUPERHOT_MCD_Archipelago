@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Weapons;
 using Assets.Scripts.Mods;
 using SUPERHOT_MCD_Mod;
+using MCDView;
 
 public enum ArchipelagoItem
 {
@@ -85,11 +86,19 @@ public static class ArchipelagoDataManager
             if (PlayerUpgrades.UnlockedMods != null)
                 PlayerUpgrades.UnlockMod(mod);
 
-            // TODO: Display the hack unlock view
-            // Use SHGUI.AddViewOnTop for the parent
-            // if (SHRLGame.Instance?.PlayerStats?.CurrentRun == null)
-            // {
-            // }
+            // If the player is currently inside the main menu
+            // Immedietally show the hack unlokc view
+            if (SHRLGame.Instance?.PlayerStats?.CurrentRun == null)
+                return;
+                
+            for (int i = SHGUI.current.views.Count - 1; i >= 0; i--)
+            {
+                if (SHGUI.current.views[i] is MainView)
+                {
+                    SHGUI.current.AddViewOnTop(new HackUnlockView((SHGUIPopup)SHGUI.current.views[i], 10, null, new(delegate { }), true, false, 3f));
+                    return;                        
+                }       
+            }
         }
     }
 

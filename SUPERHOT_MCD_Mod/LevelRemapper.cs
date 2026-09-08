@@ -63,42 +63,30 @@ public static class LevelRemapper
     {
         IEnumerator<char> stream = levelstream.GetEnumerator();
         stream.MoveNext();
-        Plugin.Logger.LogDebug($"here2");
         IEnumerator<RunID> order = ((IEnumerable<RunID>)levelOrder).GetEnumerator();
         order.MoveNext();
-        Plugin.Logger.LogDebug($"here3");
         Dictionary<RunID, RunID> RemappedRuns = new();
         do
         {
             // 1. pull two characters from the stream
-            Plugin.Logger.LogDebug($"here4");
             RunID level = order.Current;
-            Plugin.Logger.LogDebug($"here5");
             order.MoveNext();
-            Plugin.Logger.LogDebug($"here6");
             char first = stream.Current;
-            Plugin.Logger.LogDebug($"here8");
             stream.MoveNext();
-            Plugin.Logger.LogDebug($"here8");
             char second = stream.Current;
 
             // 2. convert to a RunID
-            Plugin.Logger.LogDebug($"trying to construct number {first}{second}");
             int id = int.Parse(first.ToString() + second.ToString());
-            Plugin.Logger.LogDebug($"here9");
 
             // In order to save space, RunID 800 got remapped to RunID 81
+            // RunID 81 doesn't correspond ot anything
             if (id == 81)
                 id = 800;
 
-            Plugin.Logger.LogDebug($"here10");
             RunID runID = (RunID)id;     
-            Plugin.Logger.LogDebug($"here11");
 
             // 3. Create mapping
             RemappedRuns[level] = runID;
-            Plugin.Logger.LogDebug($"mapping {level} to {runID}");
-            
         } while (stream.MoveNext());
 
         // First, collect all cells we need (runs, terminals) 
@@ -111,19 +99,11 @@ public static class LevelRemapper
             {
                 foreach (PyramidCellData col in row.Column)
                 {
-                    if (col.Type == CellType.Path && col.blockedKey != null)
-                    {
-                        Plugin.Logger.LogDebug("Found path! Blocked by: " + col.blockedKey);
-                    }
-
                     if (col.Type != CellType.Run && col.Type != CellType.Terminal)
                         continue;
                     
-                    string info = (col.Run == null)? "none" : col.Run.RunID.ToString();
                     if (col.Run != null)
-                    {
                         newCells.Add(col.Run.RunID, new(col));
-                    }
                 }
             }
         }
