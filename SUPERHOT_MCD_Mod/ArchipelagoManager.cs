@@ -73,6 +73,7 @@ public static class ArchipelagoManager
     {
         // Set seed for save file
         ArchipelagoDataManager.SaveFile = Path.Combine(Plugin.PluginFolder, "shmcd.save." + session.RoomState.Seed);
+        SHRLSaveManager.Instance.LoadAsync((_) => { });
 
         // We're going to offload the entire save manager to persistent data
         // Hence start by clearing all data in it

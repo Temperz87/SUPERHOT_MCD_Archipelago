@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using HarmonyLib;
 using Statistics;
+using SUPERHOT_MCD_Mod;
 using SystemStorage;
 
 // Patches responsible for redirecting the Archipelago data to a new save file
@@ -15,8 +16,14 @@ public static class Ensure_ArchipelagoDataOnly
     [HarmonyPrefix]
     public static bool Prefix_SaveAsync(SHRLSaveManager __instance, ref bool ___saveFileExist, Action<StorageResult> OnFinish)
     {
+        if (ArchipelagoSettingsView.DoNotSave) {
+            Plugin.Logger.LogDebug("Saves are disabled, not saving");
+            return false;
+        }
+
         if (!ArchipelagoManager.Connected)
             return true;
+
         
         if (!Singleton<PlayerManager>.Instance.Storage.IsReadyToUse)
 		{
@@ -38,6 +45,7 @@ public static class Ensure_ArchipelagoDataOnly
     [HarmonyPrefix]
     public static bool Prefix_LoadAsync(SHRLSaveManager __instance, SHRLSaveManager.OnLoadAsyncDelegate onFinish)
     {
+        Plugin.Logger.LogDebug("Loading save");
         if (!ArchipelagoManager.Connected)
             return true;
 

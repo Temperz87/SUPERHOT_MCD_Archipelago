@@ -61,6 +61,7 @@ public static class LevelRemapper
 
     public static void Remap(string levelstream)
     {
+        Plugin.Logger.LogDebug($"Remapping using string:\n\t{levelstream}");
         IEnumerator<char> stream = levelstream.GetEnumerator();
         stream.MoveNext();
         IEnumerator<RunID> order = ((IEnumerable<RunID>)levelOrder).GetEnumerator();
@@ -86,6 +87,7 @@ public static class LevelRemapper
             RunID runID = (RunID)id;     
 
             // 3. Create mapping
+            Plugin.Logger.LogDebug($"Remapping {level} ({(int)level} to {runID} ({(int)runID})");
             RemappedRuns[level] = runID;
         } while (stream.MoveNext());
 
@@ -102,8 +104,9 @@ public static class LevelRemapper
                     if (col.Type != CellType.Run && col.Type != CellType.Terminal)
                         continue;
                     
-                    if (col.Run != null)
+                    if (col.Run != null) {
                         newCells.Add(col.Run.RunID, new(col));
+                    }
                 }
             }
         }
@@ -130,7 +133,9 @@ public static class LevelRemapper
                     }
                     
                     // Probably don't need to copy construct
-                    row.Column[i] = new(newCells[remapped]);
+                    PyramidCellData newCell = new(newCells[remapped]);
+                    newCell.keyToUnlockAfterCompletion = row.Column[i].keyToUnlockAfterCompletion;
+                    row.Column[i] = newCell;
                 }
             }
         }
