@@ -68,21 +68,11 @@ public class StringSettingsButton : SHGUIcommanderbutton
 		                    SHGUI.current.PlaySound(SHGUIsound.tick);
                         }
                     }
-                    else if ((c | 32) >= 'a' && (c | 32) <= 'z')
+                    else if (c >= 32 && c <= 126)
                     {
+                        // ASCII is nice in that all human readable characters are continguos
+                        // Hence between 32 and 126 is a typable char
                         sb.Append(c);
-                        UpdateData();
-		                SHGUI.current.PlaySound(SHGUIsound.tick);
-                    }
-                    else if (c >= '0' && c <= '9')
-                    {
-                        sb.Append(c);   
-                        UpdateData();
-		                SHGUI.current.PlaySound(SHGUIsound.tick);
-                    }
-                    else if (c == '.'|| c == ':' || c == '/' || c == ' ')
-                    {
-                        sb.Append(c);   
                         UpdateData();
 		                SHGUI.current.PlaySound(SHGUIsound.tick);
                     }
