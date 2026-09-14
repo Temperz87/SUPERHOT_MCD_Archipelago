@@ -154,12 +154,6 @@ def create_all_locations(world: SHMCDWorld) -> None:
     create_regular_locations(world)
     create_events(world)
 
-# TODO:
-# 1. separate out runs/crypts and caches/cores
-# 2. see how many runs/crypts and caches/cores each region has
-# 3. create massive byte stream consisting of RunIds, where byte 255 = RunID 800
-# 4. 1 becomes first in byte array, 1a becomes second, etc. etc.
-# 5. win
 def randomize_locations(world: SHMCDWorld) -> None:
     # Get each region
     sensory_layer = world.get_region("SENSORY")

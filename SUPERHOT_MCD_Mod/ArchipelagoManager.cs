@@ -6,7 +6,6 @@ using Assets.Scripts.Weapons;
 using SUPERHOT_MCD_Mod;
 
 
-// TODO: The hack unlock view and the core unlock view almost never have the right contents 
 public static class ArchipelagoManager
 {
     public static bool Connected {get; private set;} = false;
@@ -14,6 +13,9 @@ public static class ArchipelagoManager
 
     public static bool Connect(string ip, ushort port, string slotName, string password)
     {
+        if (Connected)
+            return false;
+
         Plugin.Logger.LogDebug($"Trying to connect to {ip}:{port} on slot {slotName}");
         session = ArchipelagoSessionFactory.CreateSession(ip, port);
         LoginResult result;
@@ -78,7 +80,6 @@ public static class ArchipelagoManager
         // We're going to offload the entire save manager to persistent data
         // Hence start by clearing all data in it
         // (does NOT delete the save)
-
         if (SHRLSaveManager.Instance)
             SHRLSaveManager.Instance.ClearSaveManager();
         
@@ -100,7 +101,6 @@ public static class ArchipelagoManager
 
     private static void OnReceiveItem(Archipelago.MultiClient.Net.Helpers.ReceivedItemsHelper handler)
     {
-        // TODO: When we have a gui for "I GOT AN ITEM!!!" invoke said GUI
         try 
         {
             ItemInfo item = session.Items.DequeueItem();
