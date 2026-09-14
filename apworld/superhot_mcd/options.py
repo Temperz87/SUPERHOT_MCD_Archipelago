@@ -8,7 +8,6 @@ class DeathLink(Toggle):
     """
     display_name = "Death link"
 
-
 class RandomizeLevelOrder(DefaultOnToggle):
     """
     THE NODES INSIDE OF THE PYRAMID APPEAR IN A RANODM ORDER.
@@ -34,8 +33,7 @@ class UnlockWeaponFiring(Toggle):
 
 @dataclass
 class SHMCDOptions(PerGameCommonOptions):
-    # deathlink: DeathLink
+    deathlink: DeathLink
     randomizeLevelOrder: RandomizeLevelOrder
     unlockPyramidLayers: UnlockPyramidLayers
     unlockWeaponFiring: UnlockWeaponFiring
-    

@@ -2,14 +2,20 @@ using System;
 using System.IO;
 using Archipelago.MultiClient.Net;
 using Archipelago.MultiClient.Net.Models;
+using Archipelago.MultiClient.Net.BounceFeatures.DeathLink;
 using Assets.Scripts.Weapons;
 using SUPERHOT_MCD_Mod;
+using InControl;
+using UnityEngine;
 
 
 public static class ArchipelagoManager
 {
     public static bool Connected {get; private set;} = false;
+    public static bool DeatLinkActive {get { return deathLink != null; }}
     private static ArchipelagoSession session = null;
+    private static DeathLinkService deathLink = null;
+    private static string slotname = null;
 
     public static bool Connect(string ip, ushort port, string slotName, string password)
     {
@@ -25,6 +31,7 @@ public static class ArchipelagoManager
                                                 Archipelago.MultiClient.Net.Enums.ItemsHandlingFlags.AllItems,
                                                 password: password, requestSlotData: true);
             Connected = result.Successful;
+            slotname = slotName;
         }
         catch (Exception e)
         {
@@ -42,8 +49,6 @@ public static class ArchipelagoManager
             return false;   
         }
 
-
-        // TODO: Setup deathlink, setup randomized level order
         var slotdata = ((LoginSuccessful)result).SlotData;
         Plugin.Logger.LogDebug($"unlockPyramidLayers: {slotdata["unlockPyramidLayers"]}");
         if (slotdata["unlockPyramidLayers"].ToString() == "0")
@@ -65,6 +70,16 @@ public static class ArchipelagoManager
         {
             string randomstring = slotdata["order_string"].ToString();
             LevelRemapper.Remap(randomstring);
+        }
+
+        foreach (var kv in slotdata)
+            Plugin.Logger.LogDebug($"key: {kv.Key} value: {kv.Value}");   
+        Plugin.Logger.LogDebug($"deathlink: {slotdata["deathlink"]}"); 
+        if (slotdata["deathlink"].ToString() == "1")
+        {
+            deathLink = session.CreateDeathLinkService();
+            deathLink.EnableDeathLink();
+            deathLink.OnDeathLinkReceived += HandleDeathLink;
         }
 
         OnConnect();
@@ -90,6 +105,7 @@ public static class ArchipelagoManager
         {
             // TODO: Graceful disconnect
             Connected = false;
+            deathLink = null;
             EventManager.Unsubscribe(SHRLManager.RunEvent.OnWin, RunWon);
             Plugin.Logger.LogWarning("Disconnected from Archipelago");
         };
@@ -132,9 +148,29 @@ public static class ArchipelagoManager
             session.Locations.CompleteLocationChecks(id);
     }
 
+    public static void SendDeathLink(string cause)
+    {
+        if (deathLink == null)
+            return;
+
+        Plugin.Logger.LogDebug($"Sending death link: {cause}");
+        deathLink.SendDeathLink(new(slotname, cause));
+    }
+    
     // Named function and not a lambda so we can unsubscribe when we disconnect
     private static void RunWon(object[] _) => CheckLocation(SHRLGame.Instance.PlayerStats.CurrentRun.RunID);
     
+    private static void HandleDeathLink(DeathLink link)
+    {
+        if (PlayerActions.CURRENT == null) 
+            return;
+        
+        // Instant kill the player
+        Plugin.Logger.LogDebug("Received death link, killing the player");
+        SHRLGame.Instance.PlayerStats.SetPlayerHealth(0);
+        PlayerActions.CURRENT?.Kill(CameraManager.Instance.CurrentCameraTransform.position + CameraManager.Instance.CurrentCameraTransform.forward * 2f, hardKill: true, forceKill: true);
+    }
+
     public static void Win() 
     {
         Plugin.Logger.LogDebug("A winner is you!");

@@ -36,7 +36,7 @@ class SHMCDWorld(World):
     def fill_slot_data(self) -> Mapping[str, Any]:
         # If you need access to the player's chosen options on the client side, there is a helper for that.
         d = self.options.as_dict(
-            "randomizeLevelOrder", "unlockPyramidLayers", "unlockWeaponFiring"
+            "deathlink", "randomizeLevelOrder", "unlockPyramidLayers", "unlockWeaponFiring"
         )
         d['order_string'] = self.order_string
         return d
