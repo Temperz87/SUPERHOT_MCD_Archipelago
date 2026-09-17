@@ -142,7 +142,7 @@ public static class Inject_Deathlink
                 sources = oob_sources;
                 break;
             case "ArchipelagoManager.HandleDeathLink":
-                // The instant kill is used for death link
+                // This gets called by our mod
                 // So we don't want a recursive death link situation
                 // Hence we just return
                 return;
