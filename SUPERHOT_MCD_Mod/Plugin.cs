@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using BepInEx;
@@ -7,18 +6,19 @@ using BepInEx.Logging;
 using HarmonyLib;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UnityEngine;
 
 namespace SUPERHOT_MCD_Mod;
 
 [BepInPlugin("tempy.ap.SHMCD", MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-public class Plugin : BaseUnityPlugin 
+public class Plugin : BaseUnityPlugin
 {
     // We'll be storing savefiles here!
-    public static string PluginFolder {get; private set; }
-    public static Plugin instance {get; private set;}
+    public static string PluginFolder { get; private set; }
+    public static Plugin instance { get; private set; }
     internal static new ManualLogSource Logger;
     private readonly Harmony harmony = new Harmony("tempy.ap.SHMCD");
-        
+
     private void Awake()
     {
         instance = this;
@@ -50,7 +50,7 @@ public class Plugin : BaseUnityPlugin
             {"slot", ArchipelagoSettingsView.slot},
             {"password", ArchipelagoSettingsView.password}
         };
-        
+
         JObject json = new()
         {
             new JProperty("hostname", ArchipelagoSettingsView.hostname),
@@ -61,4 +61,24 @@ public class Plugin : BaseUnityPlugin
 
         File.WriteAllText(Path.Combine(PluginFolder, "connection_info.json"), json.ToString(Formatting.Indented));
     }
-}   
+
+#if DEBUG
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (SHRLGame.Instance.PlayerStats.CurrentRun == null)
+                return;
+                
+            SHRLRun currentRun = SHRLGame.Instance.PlayerStats.CurrentRun;
+            int count = SHRLGame.Instance.PlayerStats.CurrentRun.Cells.Count;
+            if (currentRun.ShouldHaveEndLevel() && currentRun.NumberOfLevels > 1)
+                currentRun.CurrentCell = count - 2;
+            else
+                currentRun.CurrentCell = count - 1;
+            PejAiManager.CURRENT.KillAllEnemies();
+        }
+    }
+#endif
+
+}
