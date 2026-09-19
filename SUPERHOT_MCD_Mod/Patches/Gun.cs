@@ -60,6 +60,9 @@ public static class Inject_ShotgunMeleeWhenNotUnlocked
     [HarmonyPatch(typeof(Gun), nameof(Gun.Pickup))]
     public static void Postfix(Gun __instance)
     {
+        if (!ArchipelagoManager.Connected)
+            return;
+        
         if (__instance.weapon_SubType == Weapon_SubType.Shotgun && !ArchipelagoDataManager.UnlockedGuns.Contains(Assets.Scripts.Weapons.WeaponID.Shotgun))
         {
             __instance.Invoke("LaunchNoAmmoAnimation", 0);

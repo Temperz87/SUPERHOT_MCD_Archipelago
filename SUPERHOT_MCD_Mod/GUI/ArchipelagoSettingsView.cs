@@ -1,9 +1,3 @@
-using MCDView;
-using System;
-using Assets.Scripts.Utilities;
-using SystemStorage;
-using SUPERHOT_MCD_Mod;
-
 public class ArchipelagoSettingsView : APPSettings
 {
     private bool inButton;

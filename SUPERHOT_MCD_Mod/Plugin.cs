@@ -43,14 +43,6 @@ public class Plugin : BaseUnityPlugin
     // Dump data back into connection info
     private void OnApplicationQuit()
     {
-        Dictionary<string, string> data = new()
-        {
-            {"hostname", ArchipelagoSettingsView.hostname},
-            {"port", ArchipelagoSettingsView.port},
-            {"slot", ArchipelagoSettingsView.slot},
-            {"password", ArchipelagoSettingsView.password}
-        };
-
         JObject json = new()
         {
             new JProperty("hostname", ArchipelagoSettingsView.hostname),
