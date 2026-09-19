@@ -7,7 +7,7 @@ A mod that allows transform SUPERHOT: MIND CONTROL DELTE into an Archipelago! Th
 3. Open the Archipelago launcher, then drag the `superhot_mcd.apworld` into the launcher.
 
 ## Usage
-For connecting to a room, edit the `connection_info.json` final found in `plugins/SUPERHOT_MCD_Archipelago` to fill in your host name, port, and slot name. The password field can be left blank if your room does not have a password, otherwise it must be filled with the password. After this, start the game and you should be connected! If nothing seems to have changed you probably aren't connected. Double check your information, and if it looks correct try checking the output log of the game.
+In order to connect a multiworld, first ensure that you are either in the view that has the "MORE" button, or in the level selector for the game. After that, Hit `F1` (or your settigns key, if rebound) on the keyboard, then navigate to the Archipelago tab. Press enter or space to enter the Archipelago subview, then fill in your information accordingly. Finally, press connect when you're ready, and you connect! In the event that you do not connect, the right panel view will update with a reason for failure.
 
 For generating a game, please consult the [Archipelago guide](https://archipelago.gg/tutorial/Archipelago/setup_en).
 
